@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-2">
+        <h2 class="text-center">Simple Calculator</h2>
+        <input type="text" id="display" class="form-control" disabled>
+        <div class="row m-2">
+            <button class="col-3 btn btn-danger" onclick="clearDisplay()">C</button>
+        </div>
+        <div class="row m-2">
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('1')">1</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('2')">2</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('3')">3</button>
+            <button class="col-3 btn btn-primary p-2 mb-2" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div class="row m-2">
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('4')">4</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('5')">5</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('6')">6</button>
+            <button class="col-3 btn btn-primary p-2 mb-2" onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div class="row m-2">
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('7')">7</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('8')">8</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('9')">9</button>
+            <button class="col-3 btn btn-primary p-2 mb-2" onclick="appendToDisplay('*')">*</button>
+        </div>
+        <div class="row m-2">
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('0')">0</button>
+            <button class="col-3 btn btn-secondary p-2 mb-2" onclick="appendToDisplay('.')">.</button>
+            <button class="col-3 btn btn-success p-2 mb-2" onclick="calculate()">=</button>
+            <button class="col-3 btn btn-primary p-2 mb-2" onclick="appendToDisplay('/')">/</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
